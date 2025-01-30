@@ -1,0 +1,5 @@
+{
+    "name": "antizert",
+    "type": "module",
+    "main": "bot/main.js"
+}
