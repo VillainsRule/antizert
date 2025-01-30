@@ -1,9 +1,9 @@
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } from 'discord.js';
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, MessageFlags } from 'discord.js';
 
 export default async (client) => client.on('interactionCreate', async (interaction) => {
     if (interaction.isCommand()) {
         await interaction.reply({
-            ephemeral: true,
+            flags: MessageFlags.Ephemeral,
             content: '**loading ad...**'
         });
 
@@ -34,7 +34,7 @@ export default async (client) => client.on('interactionCreate', async (interacti
 
     if (interaction.isButton()) {
         if (interaction.customId == 'antizert') interaction.reply({
-            ephemeral: true,
+            flags: MessageFlags.Ephemeral,
             embeds: [
                 new EmbedBuilder()
                     .setDescription(`# INSTALL INSTRUCTIONS\n## 1. CLICK "DOWNLOAD" BELOW TO OPEN GREASYFORK\n## 2. CLICK "INSTALL" ON THE GREASYFORK PAGE\n## 3. INSTALL ANY SCRIPT MADE BY ZERTALIOUS\n## 4. ADS ARE NOW BLOCKED! ENJOY!`)
@@ -54,7 +54,7 @@ export default async (client) => client.on('interactionCreate', async (interacti
         });
 
         if (interaction.customId == 'donttrust') interaction.reply({
-            ephemeral: true,
+            flags: MessageFlags.Ephemeral,
             embeds: [
                 new EmbedBuilder()
                     .setDescription(`**antizert** is open-source and unobfuscated/unminified on **github** and **greasyfork**.\nyou can read the code on [github](https://github.com/VillainsRule/antizert/blob/master/antizert.user.js) if you seriously don't trust it.\nif you can't code, ask chatgpt to read it for you.`)
