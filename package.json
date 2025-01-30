@@ -1,5 +1,8 @@
 {
     "name": "antizert",
     "type": "module",
-    "main": "bot/main.js"
+    "main": "bot/main.js",
+    "dependencies": {
+        "discord.js": "^14.17.3"
+    }
 }

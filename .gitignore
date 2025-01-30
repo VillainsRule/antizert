@@ -1,3 +1,7 @@
+# modules
+node_modules
+bun.lock
+
 # protected
 token.js
 
