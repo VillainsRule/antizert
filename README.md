@@ -19,6 +19,8 @@ Once you install "antizert", this script will quietly run in the background, and
 
 You'll never see an ad again from any scripts. That's how easy it is!
 
+Note: for some scripts like Krunker, it will briefly show zertalious.xyz in the search bar. This should instantly disappear.
+
 ## READ THIS FOR SHELL SHOCKERS
 
 There is a **MUCH BETTER** client with NO ads that has features like ANTIBLOOM, PREDICTION, and UNBANNING!
