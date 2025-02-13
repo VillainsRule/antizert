@@ -19,6 +19,16 @@ export default async (client: Client) => client.on('ready', async () => {
             description: 'display the button ad!',
             interaction_types: [0, 1],
             contexts: [0, 1, 2]
+        }, {
+            name: 'workingaimbot',
+            description: 'display the statefarm ad!',
+            interaction_types: [0, 1],
+            contexts: [0, 1, 2],
+            options: [{
+                type: 6,
+                name: 'user',
+                description: 'a user to mention'
+            }]
         }]
     });
 

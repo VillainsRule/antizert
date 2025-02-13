@@ -1,4 +1,12 @@
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle, Client, EmbedBuilder, MessageFlags } from 'discord.js';
+import {
+    ActionRowBuilder,
+    ButtonBuilder,
+    ButtonStyle,
+    Client,
+    EmbedBuilder,
+    InteractionReplyOptions,
+    MessageFlags
+} from 'discord.js';
 
 export default async (client: Client) => client.on('interactionCreate', async (interaction) => {
     if (interaction.isCommand() && interaction.commandName === 'antizert') {
@@ -11,7 +19,7 @@ export default async (client: Client) => client.on('interactionCreate', async (i
             embeds: [
                 new EmbedBuilder()
                     .setDescription('# tired of 4 page ads?\n## click "DOWNLOAD ANTIZERT" to bypass ALL ADS!\n## no more editing ad code, this does it 4 u!')
-                    .setFooter({ text: 'the code is on the "code" tab of greasyfork. don\'t trust it? ask chatgpt to read.'})
+                    .setFooter({ text: 'the code is on the "code" tab of greasyfork. don\'t trust it? ask chatgpt to read.' })
             ],
             components: [
                 new ActionRowBuilder<ButtonBuilder>().addComponents(
@@ -25,6 +33,7 @@ export default async (client: Client) => client.on('interactionCreate', async (i
                         .setStyle(ButtonStyle.Primary),
                     new ButtonBuilder()
                         .setURL('https://github.com/VillainsRule/antizert')
+                        .setEmoji('<:github:1339740377909039154>')
                         .setLabel('read code on github')
                         .setStyle(ButtonStyle.Link)
                 )
@@ -41,22 +50,62 @@ export default async (client: Client) => client.on('interactionCreate', async (i
         interaction.followUp({
             embeds: [
                 new EmbedBuilder()
-                    .setDescription('**antizert** is a script that **removes the redirects** from zertalious\'s scripts.')
-                    .setFooter({ text: 'don\'t trust it? ask chatgpt to read the code.'})
+                    .setDescription('**antizert** is a script that **removes the redirects** from zertalious\'s scripts.\nyou can download it now, and no scripts will ever redirect you again.')
+                    .setFooter({ text: 'don\'t trust it? ask chatgpt to read the code.' })
             ],
             components: [
                 new ActionRowBuilder<ButtonBuilder>().addComponents(
                     new ButtonBuilder()
                         .setURL('https://greasyfork.org/scripts/524543')
-                        .setLabel('DOWNLOAD FROM GREASYFORK')
+                        .setEmoji('<:greasyfork:1339740215522234391>')
+                        .setLabel('Download from GreasyFork')
                         .setStyle(ButtonStyle.Link),
                     new ButtonBuilder()
-                        .setURL('https://github.com/VillainsRule/antizert')
-                        .setLabel('read code on github')
+                        .setURL('https://github.com/VillainsRule/antizert/blob/main/antizert.user.js')
+                        .setEmoji('<:github:1339740377909039154>')
+                        .setLabel('Download from GitHub')
                         .setStyle(ButtonStyle.Link)
                 )
             ]
         })
+    }
+
+    if (interaction.isCommand() && interaction.commandName === 'workingaimbot') {
+        await interaction.reply({
+            flags: MessageFlags.Ephemeral,
+            content: '**loading ad...**'
+        });
+
+        await new Promise((r) => setTimeout(r, 3000));
+
+        let msg: InteractionReplyOptions = {
+            embeds: [
+                new EmbedBuilder()
+                    .setDescription('**statefarm client** is a WORKING AIBMOT FOR SHELL SHOCKERS!\nit also has the following features:\n\n- bloom hacks\n- aimbot prediction\n- esp/nametags\n- ammo/grenade esp\n- health displays\n- unbanning\n- a lot more!\n\ndownload using the below buttons!')
+                    .setFooter({ text: 'don\'t trust it? ask chatgpt to read the code.' })
+            ],
+            components: [
+                new ActionRowBuilder<ButtonBuilder>().addComponents(
+                    new ButtonBuilder()
+                        .setURL('https://greasyfork.org/scripts/482982')
+                        .setEmoji('<:greasyfork:1339740215522234391>')
+                        .setLabel('Download via GreasyFork')
+                        .setStyle(ButtonStyle.Link)
+                ),
+                new ActionRowBuilder<ButtonBuilder>().addComponents(
+                    new ButtonBuilder()
+                        .setURL('https://github.com/Hydroflame522/StateFarmClient/blob/main/StateFarmClient.js')
+                        .setEmoji('<:github:1339740377909039154>')
+                        .setLabel('Download via GitHub')
+                        .setStyle(ButtonStyle.Link)
+                )
+            ]
+        };
+
+        // @ts-expect-error discord.js types are broken
+        if (interaction.options.getUser('user')) msg.content = `<@${interaction.options.getUser('user').id}>`;
+
+        interaction.followUp(msg);
     }
 
     if (interaction.isButton()) {

@@ -2,7 +2,7 @@
 // @name         ANTIZERT: NO ADS FOR ZERTALIOUS CHEATS (krunker, 1v1.lol, shell shockers, + MORE!)
 // @description  BYPASSES ads from ANY CHEAT created by "ZERTALIOUS". install this WITH a "zertalious" cheat, and this will BYPASS THE ADS!. works on krunker.io, 1v1.lol, shellshock.io, ev.io, digdig.io, surviv.io, voxiom.io, & paperio!
 // @icon         https://i.imgur.com/ORAaPzD.png
-// @version      8
+// @version      9
 
 // @author       VillainsRule
 // @namespace    https://villainsrule.xyz
@@ -104,12 +104,12 @@ if (!location.host.includes('zertalious')) {
     let params = new URLSearchParams(url.search);
 
     if (params.get('ref')) {
-        const array = params.get('ref').split( ',' ).map((x) => parseInt(x));
+        const array = params.get('ref').split(',').map((x) => parseInt(x));
         const url = new TextDecoder().decode(new Uint8Array(array));
         location.href = url;
     } else GM_cookie.list({ name: 'ref' }, (cookies) => {
         if (cookies && cookies[0] && cookies[0].value) {
-            const array = decodeURIComponent(cookies[0].value).split( ',' ).map((x) => parseInt(x));
+            const array = decodeURIComponent(cookies[0].value).split(',').map((x) => parseInt(x));
             const url = new TextDecoder().decode(new Uint8Array(array));
             location.href = url;
         } else alert('[antizert] could not detect a URL. go to the feedback on greasyfork and open a post with console logs.')
