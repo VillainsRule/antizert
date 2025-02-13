@@ -3,7 +3,7 @@ node_modules
 bun.lock
 
 # protected
-token.js
+token.*
 
 # config
 .DS_Store

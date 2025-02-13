@@ -3,6 +3,6 @@
     "type": "module",
     "main": "bot/main.js",
     "dependencies": {
-        "discord.js": "^14.17.3"
+        "discord.js": "^14.18.0"
     }
 }

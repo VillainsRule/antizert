@@ -1,7 +1,7 @@
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, MessageFlags } from 'discord.js';
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle, Client, EmbedBuilder, MessageFlags } from 'discord.js';
 
-export default async (client) => client.on('interactionCreate', async (interaction) => {
-    if (interaction.isCommand()) {
+export default async (client: Client) => client.on('interactionCreate', async (interaction) => {
+    if (interaction.isCommand() && interaction.commandName === 'antizert') {
         await interaction.reply({
             flags: MessageFlags.Ephemeral,
             content: '**loading ad...**'
@@ -14,7 +14,7 @@ export default async (client) => client.on('interactionCreate', async (interacti
                     .setFooter({ text: 'the code is on the "code" tab of greasyfork. don\'t trust it? ask chatgpt to read.'})
             ],
             components: [
-                new ActionRowBuilder().addComponents(
+                new ActionRowBuilder<ButtonBuilder>().addComponents(
                     new ButtonBuilder()
                         .setCustomId('antizert')
                         .setLabel('CLICK TO BLOCK ALL ADS!')
@@ -32,6 +32,33 @@ export default async (client) => client.on('interactionCreate', async (interacti
         })
     }
 
+    if (interaction.isCommand() && interaction.commandName === 'button') {
+        await interaction.reply({
+            flags: MessageFlags.Ephemeral,
+            content: '**loading ad...**'
+        });
+
+        interaction.followUp({
+            embeds: [
+                new EmbedBuilder()
+                    .setDescription('**antizert** is a script that **removes the redirects** from zertalious\'s scripts.')
+                    .setFooter({ text: 'don\'t trust it? ask chatgpt to read the code.'})
+            ],
+            components: [
+                new ActionRowBuilder<ButtonBuilder>().addComponents(
+                    new ButtonBuilder()
+                        .setURL('https://greasyfork.org/scripts/524543')
+                        .setLabel('DOWNLOAD FROM GREASYFORK')
+                        .setStyle(ButtonStyle.Link),
+                    new ButtonBuilder()
+                        .setURL('https://github.com/VillainsRule/antizert')
+                        .setLabel('read code on github')
+                        .setStyle(ButtonStyle.Link)
+                )
+            ]
+        })
+    }
+
     if (interaction.isButton()) {
         if (interaction.customId == 'antizert') interaction.reply({
             flags: MessageFlags.Ephemeral,
@@ -40,7 +67,7 @@ export default async (client) => client.on('interactionCreate', async (interacti
                     .setDescription(`# INSTALL INSTRUCTIONS\n## 1. CLICK "DOWNLOAD" BELOW TO OPEN GREASYFORK\n## 2. CLICK "INSTALL" ON THE GREASYFORK PAGE\n## 3. INSTALL ANY SCRIPT MADE BY ZERTALIOUS\n## 4. ADS ARE NOW BLOCKED! ENJOY!`)
             ],
             components: [
-                new ActionRowBuilder().addComponents(
+                new ActionRowBuilder<ButtonBuilder>().addComponents(
                     new ButtonBuilder()
                         .setLabel('DOWNLOAD FROM GREASYFORK')
                         .setURL('https://greasyfork.org/scripts/524543')
