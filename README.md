@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> If it keeps reloading the page, turn it off while this happens, close the page, and turn it back on.<br><br>This script is also now (mostly) obsolete because Zertalious removed ads on multiple of his scripts (Voxiom, Krunker, 1v1.LOL, Shell Shockers).
+
 # BYPASS ALL ZERTALIOUS ADS!!
 
 Installed ANY of these scripts?
